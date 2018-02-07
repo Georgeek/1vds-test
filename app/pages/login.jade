@@ -1,0 +1,24 @@
+extends /blocks/layout-default/layout-default
+
+block head
+	- var pageTitle = '1vds test';
+
+block content
+	//- material input
+	.box
+		.box__container
+			h1.box__title ISP manager
+			form.material-input(method="post" action="https://82.146.48.90:1500/ispmgr")
+				.group
+					input(type="text" name="username" required)
+					span.highlight
+					span.bar
+					label Логин
+
+				.group
+					input(type="password" name="password" required)
+					span.highlight
+					span.bar
+					label Пароль
+				input.material__btn.material--blue(type="submit" value="Войти")
+				input(type="hidden" name="func" value="auth")

@@ -1,0 +1,98 @@
+// Material template --------------------------------------
+.material-input
+  text-align center
+  .group
+    position relative
+    margin-bottom 40px
+
+  input[type="text"], input[type="password"]
+    padding 10px 10px 10px 5px
+    width 300px
+    font-size 18px
+    border none
+    border-bottom 1px solid #757575
+
+    &:focus
+      outline none
+
+  label
+    position absolute
+    top 10px
+    left 5px
+    font-size 18px
+    pointer-events none
+    color #999
+    transition .2s ease all
+
+  // active state
+  input:focus ~ label, input:valid ~ label
+    top -20px
+    font-size 14px
+    color #5264ae
+
+  // bottom bars
+  .bar
+    position relative
+    display block
+    width 300px
+
+    &:before, &:after
+      position absolute
+      bottom 1px
+      width 0
+      height 2px
+      content ''
+      background #5264ae
+      transition .2s ease all
+
+    &:before
+      left 50%
+
+    &:after
+      right 50%
+
+  input:focus ~ .bar:before, input:focus ~ .bar:after
+    width 50%
+
+  // highliter
+  .highlight
+    position absolute
+    top 25%
+    left 0
+    width 100px
+    height 60%
+    pointer-events none
+    opacity .5
+
+  input:focus ~ .highlight
+    animation inputHighlighter .3s ease
+
+  @keyframes inputHighlighter
+    from
+      background #5264ae
+    to
+      width 0
+      background transparent
+
+.material
+  &__btn
+    padding 10px 8px
+    appearance none
+    width 120px
+    cursor pointer
+    color #eee
+    border-radius 10px
+    transition all .2s
+    border none
+    &:hover
+      background darken(#3498DB, 10%)
+      transition all .4s ease
+    // &:active
+    //   border-bottom 1px solid
+    //   transform translate(0, 5px)
+
+  &--blue
+    text-shadow 0 -2px #2980B9
+    background #3498DB
+    border-bottom 5px solid #2980B9
+
