@@ -1,11 +1,12 @@
 // Material template --------------------------------------
 .material-input
+  position relative
   text-align center
   .group
     position relative
     margin-bottom 40px
 
-  input[type="text"], input[type="password"]
+  input[type='text'], input[type='password'], input[type='email']
     padding 10px 10px 10px 5px
     width 300px
     font-size 18px
@@ -79,11 +80,12 @@
     padding 10px 8px
     appearance none
     width 120px
+    text-align center
     cursor pointer
     color #eee
+    border none
     border-radius 10px
     transition all .2s
-    border none
     &:hover
       background darken(#3498DB, 10%)
       transition all .4s ease
@@ -96,3 +98,8 @@
     background #3498DB
     border-bottom 5px solid #2980B9
 
+.error-message
+  margin 20px 0
+  padding 5px
+  background-color darkorange
+  border-radius 5px

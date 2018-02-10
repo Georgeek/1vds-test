@@ -8,17 +8,16 @@ block content
 	.box
 		.box__container
 			h1.box__title ISP manager
-			form.material-input(method="post" action="https://82.146.48.90:1500/ispmgr")
+			form#loginform.material-input
 				.group
-					input(type="text" name="username" required)
+					input#loginusername(type="text" name="username" required)
 					span.highlight
 					span.bar
 					label Логин
 
 				.group
-					input(type="password" name="password" required)
+					input#loginpassword(type="password" name="password" required)
 					span.highlight
 					span.bar
 					label Пароль
-				input.material__btn.material--blue(type="submit" value="Войти")
-				input(type="hidden" name="func" value="auth")
+				input#login-submit.material__btn.material--blue(type="submit" value="Войти")

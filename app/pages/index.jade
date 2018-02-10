@@ -10,51 +10,55 @@ block content
 				h1 WWW-домены
 		nav.nav
 			.nav__wrap
-				.nav__navbar.toolbar
+				.nav__navbar
 					.toolbar
-						a.toolbar__btn(href="https://82.146.48.90:1500/ispmgr?auth=5b03ccbl" data-url="func=webdomain.edit" data-type="new" data-name="new")
-							.icon
-								svg(version="1.1" x="0px" y="0px" viewBox="0 0 23.429 23.429" style="enable-background:new 0 0 23.429 23.429;")
-									polygon(style="fill:#010002;" points="16.946,0.643 5.019,0.643 0,5.132 0,22.726 11.935,22.726 11.935,21.146 1.777,21.146 1.777,6.852 6.926,6.852 6.926,2.221 15.169,2.221 15.169,7.111 16.946,7.111")
-									polygon(style="fill:#4CB874;" points="14.438,14.372 14.438,9.495 18.224,9.495 18.224,14.372 23.429,14.372 23.429,17.909 18.224,17.909 18.224,22.786 14.438,22.786 14.438,17.909 9.242,17.909 9.242,14.372")
-							span Создать
-						a.toolbar__btn(href="https://82.146.48.90:1500/ispmgr?auth=5b03ccbl" data-url="func=webdomain.edit" data-type="delete" data-name="delete")
-							.icon
-								svg(version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;")
-									polygon(style="fill:#EFEBDE;" points="46.5,14 32.5,0 1.5,0 1.5,58 46.5,58")
-										path(style="fill:#D5D0BB;" d="M11.5,23h25c0.552,0,1-0.447,1-1s-0.448-1-1-1h-25c-0.552,0-1,0.447-1,1S10.948,23,11.5,23z")
-										path(style="fill:#D5D0BB;" d="M11.5,15h10c0.552,0,1-0.447,1-1s-0.448-1-1-1h-10c-0.552,0-1,0.447-1,1S10.948,15,11.5,15z")
-										path(style="fill:#D5D0BB;" d="M36.5,29h-25c-0.552,0-1,0.447-1,1s0.448,1,1,1h25c0.552,0,1-0.447,1-1S37.052,29,36.5,29z")
-										path(style="fill:#D5D0BB;" d="M36.5,37h-25c-0.552,0-1,0.447-1,1s0.448,1,1,1h25c0.552,0,1-0.447,1-1S37.052,37,36.5,37z")
-										path(style="fill:#D5D0BB;" d="M36.5,45h-25c-0.552,0-1,0.447-1,1s0.448,1,1,1h25c0.552,0,1-0.447,1-1S37.052,45,36.5,45z")
-									polygon(style="fill:#D5D0BB;" points="32.5,0 32.5,14 46.5,14")
-									circle(style="fill:#ED7161;" cx="44.5" cy="46" r="12")
-									path(style="fill:#FFFFFF;" d="M45.914,46l3.536-3.536c0.391-0.391,0.391-1.023,0-1.414s-1.023-0.391-1.414,0L44.5,44.586l-3.536-3.536c-0.391-0.391-1.023-0.391-1.414,0s-0.391,1.023,0,1.414L43.086,46l-3.536,3.536c-0.391,0.391-0.391,1.023,0,1.414c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293l3.536-3.536l3.536,3.536c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293c0.391-0.391,0.391-1.023,0-1.414L45.914,46z")
-							span Удалить
+						form#domainform.material-input
+							.group
+								input#domainname(type="text" name="domainname" required)
+								span.highlight
+								span.bar
+								label Имя домена
 
+							.group
+								input#domainemail(type="email" name="domainemail" required)
+								span.highlight
+								span.bar
+								label Электронный адрес
+							input#domain-create.material__btn.material--blue(type="submit" value="Создать")
+				.nav__navbar
+					.toolbar
+						#domain-success-response
+		hr
 		.title
 			.title__wrap
 				h1 База данных
 		nav.nav
 			.nav__wrap
-				.nav__navbar.toolbar
+				.nav__navbar
 					.toolbar
-						a.toolbar__btn(href="https://82.146.48.90:1500/ispmgr?auth=5b03ccbl" data-url="func=db.edit" data-type="new" data-name="new")
-							.icon
-								svg(version="1.1" x="0px" y="0px" viewBox="0 0 23.429 23.429" style="enable-background:new 0 0 23.429 23.429;")
-									polygon(style="fill:#010002;" points="16.946,0.643 5.019,0.643 0,5.132 0,22.726 11.935,22.726 11.935,21.146 1.777,21.146 1.777,6.852 6.926,6.852 6.926,2.221 15.169,2.221 15.169,7.111 16.946,7.111")
-									polygon(style="fill:#4CB874;" points="14.438,14.372 14.438,9.495 18.224,9.495 18.224,14.372 23.429,14.372 23.429,17.909 18.224,17.909 18.224,22.786 14.438,22.786 14.438,17.909 9.242,17.909 9.242,14.372")
-							span Создать
-						a.toolbar__btn(href="https://82.146.48.90:1500/ispmgr?auth=5b03ccbl" data-url="func=db.edit" data-type="delete" data-name="delete")
-							.icon
-								svg(version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;")
-									polygon(style="fill:#EFEBDE;" points="46.5,14 32.5,0 1.5,0 1.5,58 46.5,58")
-										path(style="fill:#D5D0BB;" d="M11.5,23h25c0.552,0,1-0.447,1-1s-0.448-1-1-1h-25c-0.552,0-1,0.447-1,1S10.948,23,11.5,23z")
-										path(style="fill:#D5D0BB;" d="M11.5,15h10c0.552,0,1-0.447,1-1s-0.448-1-1-1h-10c-0.552,0-1,0.447-1,1S10.948,15,11.5,15z")
-										path(style="fill:#D5D0BB;" d="M36.5,29h-25c-0.552,0-1,0.447-1,1s0.448,1,1,1h25c0.552,0,1-0.447,1-1S37.052,29,36.5,29z")
-										path(style="fill:#D5D0BB;" d="M36.5,37h-25c-0.552,0-1,0.447-1,1s0.448,1,1,1h25c0.552,0,1-0.447,1-1S37.052,37,36.5,37z")
-										path(style="fill:#D5D0BB;" d="M36.5,45h-25c-0.552,0-1,0.447-1,1s0.448,1,1,1h25c0.552,0,1-0.447,1-1S37.052,45,36.5,45z")
-									polygon(style="fill:#D5D0BB;" points="32.5,0 32.5,14 46.5,14")
-									circle(style="fill:#ED7161;" cx="44.5" cy="46" r="12")
-									path(style="fill:#FFFFFF;" d="M45.914,46l3.536-3.536c0.391-0.391,0.391-1.023,0-1.414s-1.023-0.391-1.414,0L44.5,44.586l-3.536-3.536c-0.391-0.391-1.023-0.391-1.414,0s-0.391,1.023,0,1.414L43.086,46l-3.536,3.536c-0.391,0.391-0.391,1.023,0,1.414c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293l3.536-3.536l3.536,3.536c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293c0.391-0.391,0.391-1.023,0-1.414L45.914,46z")
-							span Удалить
+						form#dbform.material-input
+							.group
+								input#dbname(type="text" name="dbname" required)
+								span.highlight
+								span.bar
+								label Название базы
+
+							.group
+								input#dbusername(type="text" name="dbusername" required)
+								span.highlight
+								span.bar
+								label Имя пользователя
+							.group
+								input#dbpassword(type="password" name="dbpassword" required)
+								span.highlight
+								span.bar
+								label Пароль
+							.group
+								input#dbconfirm(type="password" name="dbconfirm" required)
+								span.highlight
+								span.bar
+								label Подтверждение
+							input#db-create.material__btn.material--blue(type="submit" value="Создать")
+				.nav__navbar
+					.toolbar
+						#db-success-response
