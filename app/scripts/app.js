@@ -32,9 +32,9 @@ $('#login-submit').on('click', function (event) {
 				<div class="group">
 					<div class="error-message">${res.doc.error.msg.$}</div>
 				</div>
-				`))
-			} else {
-				//если авторизация прошла успешно, редиректим в корень и сохраняем данные в куки
+				`));
+			}else {
+				// если авторизация прошла успешно, редиректим в корень и сохраняем данные в куки
 				Cookies.set('sessionid', res.doc.auth.$id);
 				location.replace('/');
 			}
@@ -67,40 +67,40 @@ function updateDomainList(res) {
 					<div class="domain__wrap">
 						<div class="error-message">Список пуст</div>
 					</div>
-					`))
-			} else {
+					`));
+			}else {
 				// если содержится хотя бы 1 элемент, выводим списком
-			for (let i = 0; i < serverList.length; i++ ) {
-				const domainName = Object.values(serverList[i].name).toString();
-				const domainOwner = Object.values(serverList[i].owner).toString();
-				const domainIp = Object.values(serverList[i].ipaddr).toString();
-				const domainRoot = Object.values(serverList[i].docroot).toString();
+				for (let i = 0; i < serverList.length; i++ ) {
+					const domainName = Object.values(serverList[i].name).toString();
+					const domainOwner = Object.values(serverList[i].owner).toString();
+					const domainIp = Object.values(serverList[i].ipaddr).toString();
+					const domainRoot = Object.values(serverList[i].docroot).toString();
 
-				$('#domain-success-response').prepend($(`
-					<div class="domain__wrap">
-						<div class="domain__col">
-							<div class="domain__row">
-								<div class="domain__name">Имя домена</div>
-								<div class="domain__value">${domainName}</div>
+					$('#domain-success-response').prepend($(`
+						<div class="domain__wrap">
+							<div class="domain__col">
+								<div class="domain__row">
+									<div class="domain__name">Имя домена</div>
+									<div class="domain__value">${domainName}</div>
+								</div>
+								<div class="domain__row">
+									<div class="domain__name">Владелец домена</div>
+									<div class="domain__value">${domainOwner}</div>
+								</div>
+								<div class="domain__row">
+									<div class="domain__name">IP-адрес</div>
+									<div class="domain__value">${domainIp}</div>
+								</div>
+								<div class="domain__row">
+									<div class="domain__name">Корневая папка</div>
+									<div class="domain__value">${domainRoot}</div>
+								</div>
 							</div>
-							<div class="domain__row">
-								<div class="domain__name">Владелец домена</div>
-								<div class="domain__value">${domainOwner}</div>
+							<div class="domain__col">
+								<div class="domain__btn material__btn material--blue" data-name="${domainName}"> Удалить </div>
 							</div>
-							<div class="domain__row">
-								<div class="domain__name">IP-адрес</div>
-								<div class="domain__value">${domainIp}</div>
-							</div>
-							<div class="domain__row">
-								<div class="domain__name">Корневая папка</div>
-								<div class="domain__value">${domainRoot}</div>
-							</div>
-						</div>
-						<div class="domain__col">
-							<div class="domain__btn material__btn material--blue" data-name="${domainName}"> Удалить </div>
-						</div>
-					</div>`));
-			}
+						</div>`));
+				}
 			}
 		}
 	});
@@ -129,42 +129,42 @@ function updateDBList(res) {
 					<div class="domain__wrap">
 						<div class="error-message">Список пуст</div>
 					</div>
-					`))
-			} else {
+					`));
+			}else {
 
-			// если в списке хотя бы 1 элемент, выводим данные
-			for (let i = 0; i < serverList.length; i++ ) {
-				const dbName = Object.values(serverList[i].name).toString();
-				const dbOwner = Object.values(serverList[i].owner).toString();
-				const dbIp = Object.values(serverList[i].server_host).toString();
-				const dbVersion = Object.values(serverList[i].version).toString();
-				const dbPair = Object.values(serverList[i].pair).toString();
+				// если в списке хотя бы 1 элемент, выводим данные
+				for (let i = 0; i < serverList.length; i++ ) {
+					const dbName = Object.values(serverList[i].name).toString();
+					const dbOwner = Object.values(serverList[i].owner).toString();
+					const dbIp = Object.values(serverList[i].server_host).toString();
+					const dbVersion = Object.values(serverList[i].version).toString();
+					const dbPair = Object.values(serverList[i].pair).toString();
 
-				$('#db-success-response').prepend($(`
-					<div class="domain__wrap">
-						<div class="domain__col">
-							<div class="domain__row">
-								<div class="domain__name">Название БД</div>
-								<div class="domain__value">${dbName}</div>
+					$('#db-success-response').prepend($(`
+						<div class="domain__wrap">
+							<div class="domain__col">
+								<div class="domain__row">
+									<div class="domain__name">Название БД</div>
+									<div class="domain__value">${dbName}</div>
+								</div>
+								<div class="domain__row">
+									<div class="domain__name">Имя пользователя</div>
+									<div class="domain__value">${dbOwner}</div>
+								</div>
+								<div class="domain__row">
+									<div class="domain__name">Адрес сервера</div>
+									<div class="domain__value">${dbIp}</div>
+								</div>
+								<div class="domain__row">
+									<div class="domain__name">Корневая папка</div>
+									<div class="domain__value">${dbVersion}</div>
+								</div>
 							</div>
-							<div class="domain__row">
-								<div class="domain__name">Имя пользователя</div>
-								<div class="domain__value">${dbOwner}</div>
+							<div class="domain__col">
+								<div class="domain__btn material__btn material--blue" data-name="${dbPair}"> Удалить </div>
 							</div>
-							<div class="domain__row">
-								<div class="domain__name">Адрес сервера</div>
-								<div class="domain__value">${dbIp}</div>
-							</div>
-							<div class="domain__row">
-								<div class="domain__name">Корневая папка</div>
-								<div class="domain__value">${dbVersion}</div>
-							</div>
-						</div>
-						<div class="domain__col">
-							<div class="domain__btn material__btn material--blue" data-name="${dbPair}"> Удалить </div>
-						</div>
-					</div>`));
-			}
+						</div>`));
+				}
 			}
 		}
 	});
@@ -186,7 +186,7 @@ $(document).on('ready', function () {
 		/* Very important */
 		contentType: 'application/json',
 		success(res) {
-			//сохраняем номер сессии в куки
+			// сохраняем номер сессии в куки
 			Cookies.set('sessionid', res.doc.auth.$id);
 		},
 		error(error) {
@@ -296,7 +296,7 @@ $(document).on('click', '#db-success-response [data-name]', function () {
 			out: 'json',
 			auth: Cookies.get('sessionid'),
 			func: 'db.delete',
-			elid: $(this).attr('data-name'),
+			elid: $(this).attr('data-name')
 		},
 		dataType: 'jsonp',
 
