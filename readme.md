@@ -1,24 +1,20 @@
-# CSSSR Project Template
-**Шаблон проекта для быстрого старта**
+# Используется CSSSR Project Template
+**Тестовое задание для 1vds**
+**Реализована авторизация (проверка имени пользователя и пароля, редирект в случае успеха). Добавление и удаление домена/БД. Комментарии в коде присутствуют**
+**Рабочие файлы /app/scripts/app.js и /app/pages/ index и login**
 
 
 ## Старт проекта
 
 ### Склонируй репозиторий и перейди в папку проекта
 ```
-git clone git@github.com:CSSSR/csssr-project-template.git new-project && cd new-project
+git clone git@github.com:Georgeek/1vds-test.git new-project && cd new-project
 ```
 
 ### Установи модули
 
 ```
 npm i
-```
-
-или в разы в быстрее c [yarn](https://github.com/yarnpkg/yarn)
-
-```
-yarn install
 ```
 
 ### Запусти шаблон
@@ -34,12 +30,6 @@ npm start
 npm start
 ```
 
-### Создание нового блока
-Для создания нескольких блоков, названия нужно указывать через пробел.
-```
-npm run make-block [имя-блока] [имя-блока]
-```
-
 ### Сборка в папку `dist`
 ```
 npm run build
@@ -48,41 +38,6 @@ npm run build
 ### Production cборка в папку `dist`
 ```
 npm run production
-```
-
-### Локальный сервер на другом порте
-```
-PORT=9000 npm start
-```
-
-### Уведомления об ошибках `ESLint`
-```
-NOTIFY=true npm start
-```
-
-### Расшарить локальный сервер
-```
-TUNNEL=true npm start
-```
-
-### Открыть ссылку в браузере по умолчанию
-```
-OPEN=true npm start
-```
-
-### Собрать архив из папки `dist`
-```
-npm run zip
-```
-
-### Очистка папки `dist`
-```
-npm run clean
-```
-
-### Деплой всего содержимого папки `dist` в ветку `dist`
-```
-npm run deploy
 ```
 
 ## Git hooks
@@ -147,89 +102,3 @@ npm run deploy
 ├── readme.md                  # Документация шаблона
 └── webpack.conf.js            # Конфигурация Webpack.js
 ```
-
-
-## Как собираются и используются PNG спрайты
-
-В шаблоне предусмотрена сборка нескольких PNG спрайтов и их данных в CSS переменные.
-
-### Добавление PNG иконок
-
-Для создания спрайта нужно добавить папку в `app/sprites` и в неё PNG иконки. Важно, чтобы иконки были с чётными высотой и шириной кратными двум. Retina иконки добавлять в эту папку рядом с обычными и в конце названия файла добавить `@2x`, например:
-```
-└── app/
-    └── sprites/
-        └── emoji/
-            ├── grinning.png
-            ├── grinning@2x.png
-            ├── joy.png
-            ├── joy@2x.png
-            ├── smile.png
-            └── smile@2x.png
-```
-
-### Сборка спрайта
-
-* В папке `dist/assets/images/sprites` появятся два спрайта: обычный и Retina с `@2x` и в `app/styles/sprites` один стилевой файл с примесями. Все файлы будут с такими же названиями, как у папки, в которой находятся его иконки. Например:
-```
-├── app/
-│    └── styles/
-│       └── sprites/
-│           └── emoji.styl
-└── dist/
-    └── assets/
-        └── images/
-            └── sprites/
-                ├── emoji.png
-                └── emoji@2x.png
-
-```
-
-* В сборочных папках останутся только актуальные спрайты и стили в случае, если удалить исходные папки с иконками.
-
-### Использование спрайтов
-
-#### Retina спрайты
-
-Для подключения иконки используется примесь `retinaSprite` со значением `$icon_group`, где `icon` это название PNG иконки, например:
-```css
-.joy
-    retinaSprite $joy_group
-```
-
-В собранном виде в CSS добавятся обычный спрайт и медиа-запрос, чтобы отображать Retina спрайт только при необходимости и это будет выглядеть так:
-```css
-.joy {
-    background-image: url("../images/sprites/emoji.png");
-    background-position: 32px 0px;
-    width: 24px;
-    height: 24px;
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .joy {
-        background-image: url("../images/sprites/emoji@2x.png");
-        background-size: 88px 24px;
-    }
-}
-```
-
-#### Обычные спрайты
-
-Для подключения иконки используется примесь `sprite` со значением `$icon`, где `icon` это название PNG иконки, например:
-```css
-.joy
-    sprite $joy
-```
-
-В собранном виде в CSS добавится только обычный спрайт и это будет выглядеть так:
-```css
-.joy {
-    background-image: url("../images/sprites/emoji.png");
-    background-position: 32px 0px;
-    width: 24px;
-    height: 24px;
-}
-```
-
-## [Внеси свой вклад в развитие проекта!](https://github.com/CSSSR/csssr-project-template/blob/master/contributing.md)
