@@ -22,12 +22,10 @@ $('#login-submit').on('click', function (event) {
 		},
 		dataType: 'jsonp',
 
-		/* Very important */
 		contentType: 'application/json',
 		success(res) {
 			// если имя пользователя или пароль неверные, выводим ошибку
 			if (res.doc.error) {
-				console.error(res.doc.error.msg);
 				$('#loginform').append($(`
 				<div class="group">
 					<div class="error-message">${res.doc.error.msg.$}</div>
@@ -56,7 +54,6 @@ function updateDomainList(res) {
 		},
 		dataType: 'jsonp',
 
-		/* Very important */
 		contentType: 'application/json',
 		success(res) {
 			const serverList = res.doc.elem;
@@ -117,11 +114,9 @@ function updateDBList(res) {
 		},
 		dataType: 'jsonp',
 
-		/* Very important */
 		contentType: 'application/json',
 		success(res) {
 			const serverList = res.doc.elem;
-			console.log(res.doc);
 
 			// если список пуст, выводим ошибку
 			if (!serverList) {
@@ -183,7 +178,6 @@ $(document).on('ready', function () {
 		},
 		dataType: 'jsonp',
 
-		/* Very important */
 		contentType: 'application/json',
 		success(res) {
 			// сохраняем номер сессии в куки
@@ -204,7 +198,6 @@ $(document).on('ready', function () {
 		},
 		dataType: 'jsonp',
 
-		/* Very important */
 		contentType: 'application/json',
 		success(res) {
 			updateDomainList(res);
@@ -224,7 +217,6 @@ $(document).on('ready', function () {
 		},
 		dataType: 'jsonp',
 
-		/* Very important */
 		contentType: 'application/json',
 		success(res) {
 			updateDBList(res);
@@ -237,7 +229,6 @@ $(document).on('ready', function () {
 
 // По нажатию на кнопку удаляем доменное имя. Чтобы удалить, нужно отправить запрос с полем name
 $(document).on('click', '#domain-success-response [data-name]', function () {
-	console.log($(this).attr('data-name'));
 	$.ajax({
 		url: 'https://82.146.48.90:1500/ispmgr',
 		data: {
@@ -248,7 +239,6 @@ $(document).on('click', '#domain-success-response [data-name]', function () {
 		},
 		dataType: 'jsonp',
 
-		/* Very important */
 		contentType: 'application/json',
 		success(res) {
 			// обновляем список
@@ -275,7 +265,6 @@ $('#domain-create').on('click', function (event) {
 		},
 		dataType: 'jsonp',
 
-		/* Very important */
 		contentType: 'application/json',
 		success(res) {
 			// обновляем список
@@ -300,7 +289,6 @@ $(document).on('click', '#db-success-response [data-name]', function () {
 		},
 		dataType: 'jsonp',
 
-		/* Very important */
 		contentType: 'application/json',
 		success(res) {
 			// обновляем список
@@ -329,7 +317,6 @@ $('#db-create').on('click', function (event) {
 		},
 		dataType: 'jsonp',
 
-		/* Very important */
 		contentType: 'application/json',
 		success(res) {
 			// обновляем список
