@@ -86,9 +86,6 @@
     border none
     border-radius 10px
     transition all .2s
-    &:hover
-      background darken(#3498DB, 10%)
-      transition all .4s ease
     // &:active
     //   border-bottom 1px solid
     //   transform translate(0, 5px)
@@ -97,9 +94,27 @@
     text-shadow 0 -2px #2980B9
     background #3498DB
     border-bottom 5px solid #2980B9
+    &:hover
+      background darken(#3498DB, 10%)
+      transition all .4s ease
+  &--red
+    text-shadow 0 -2px #B71C1C
+    background #D32F2F
+    border-bottom 5px solid #B71C1C
+    &:hover
+      background darken(#D32F2F, 10%)
+      transition all .4s ease
 
 .error-message
   margin 20px 0
   padding 5px
   background-color darkorange
   border-radius 5px
+
+.logout-btn
+  text-align right
+  color #eee
+
+  a
+    &:hover, &:focus, &:active
+      color inherit

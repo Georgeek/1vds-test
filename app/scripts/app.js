@@ -6,10 +6,10 @@ $(() => {
 	svg4everybody();
 });
 
-const username = 'root';
-const password = 'VCyZn7mLi6Jk';
+// const username = 'root';
+// const password = 'VCyZn7mLi6Jk';
 
-// Авторизовываемся, после чего нас редиректнет в корень.
+// Авторизовываемся на странице /login.html, после чего нас редиректнет в корень.
 $('#login-submit').on('click', function (event) {
 	event.preventDefault();
 	$.ajax({
@@ -17,8 +17,8 @@ $('#login-submit').on('click', function (event) {
 		data: {
 			out: 'json',
 			func: 'auth',
-			username: $('#loginusername').val(), // username
-			password: $('#loginpassword').val() // password
+			username: $('#loginusername').val(),
+			password: $('#loginpassword').val()
 		},
 		dataType: 'jsonp',
 
@@ -165,66 +165,46 @@ function updateDBList(res) {
 	});
 }
 
-// Авторизуемся на сайте и получаем Session Id для дальнейшей отправки запросов
-$(document).on('ready', function () {
-	$.ajax({
-		url: 'https://82.146.48.90:1500/ispmgr',
-		data: {
-			out: 'json',
-			func: 'auth',
-			// для простоты проверки в index.html ввел сохраненные логин и пароль
-			username, // $('#loginusername').val(), // username
-			password // $('#loginpassword').val() // password
-		},
-		dataType: 'jsonp',
+// в случае успешной авторизации выводим список созданных веб-серверов
+$.ajax({
+	url: 'https://82.146.48.90:1500/ispmgr',
+	data: {
+		out: 'json',
+		auth: Cookies.get('sessionid'),
+		func: 'webdomain'
+	},
+	dataType: 'jsonp',
 
-		contentType: 'application/json',
-		success(res) {
-			// сохраняем номер сессии в куки
-			Cookies.set('sessionid', res.doc.auth.$id);
-		},
-		error(error) {
-			console.error(error);
+	contentType: 'application/json',
+	success(res) {
+		// если путь содержит НЕ login.html и отсутствуют Куки с sessionid, то редиректим на login.html
+		if (!window.location.toString().includes('login.html') && !Cookies.get('sessionid') ) {
+			return location.replace('/login.html');
 		}
-	});
+		updateDomainList(res);
+	},
+	error(res) {
+		console.error(res);
+	}
+});
 
-	// в случае успешной авторизации выводим список созданных веб-серверов
-	$.ajax({
-		url: 'https://82.146.48.90:1500/ispmgr',
-		data: {
-			out: 'json',
-			auth: Cookies.get('sessionid'),
-			func: 'webdomain'
-		},
-		dataType: 'jsonp',
+// в случае успешной авторизации выводим список созданных баз данных
+$.ajax({
+	url: 'https://82.146.48.90:1500/ispmgr',
+	data: {
+		out: 'json',
+		auth: Cookies.get('sessionid'),
+		func: 'db'
+	},
+	dataType: 'jsonp',
 
-		contentType: 'application/json',
-		success(res) {
-			updateDomainList(res);
-		},
-		error(res) {
-			console.error(res);
-		}
-	});
-
-	// в случае успешной авторизации выводим список созданных баз данных
-	$.ajax({
-		url: 'https://82.146.48.90:1500/ispmgr',
-		data: {
-			out: 'json',
-			auth: Cookies.get('sessionid'),
-			func: 'db'
-		},
-		dataType: 'jsonp',
-
-		contentType: 'application/json',
-		success(res) {
-			updateDBList(res);
-		},
-		error(res) {
-			console.error(res);
-		}
-	});
+	contentType: 'application/json',
+	success(res) {
+		updateDBList(res);
+	},
+	error(res) {
+		console.error(res);
+	}
 });
 
 // По нажатию на кнопку удаляем доменное имя. Чтобы удалить, нужно отправить запрос с полем name
@@ -253,6 +233,7 @@ $(document).on('click', '#domain-success-response [data-name]', function () {
 
 // По нажатию на кнопку создаем новое доменное имя и выводим данные в нужное поле
 $('#domain-create').on('click', function (event) {
+	event.preventDefault();
 	$.ajax({
 		url: 'https://82.146.48.90:1500/ispmgr',
 		data: {
@@ -327,4 +308,9 @@ $('#db-create').on('click', function (event) {
 		}
 	});
 	$("#db-success-response").load(location.href + " #db-success-response");
+});
+
+// Кнопка Logout
+$(document).on('click', '[data-logout]', function () {
+	Cookies.remove('sessionid');
 });
