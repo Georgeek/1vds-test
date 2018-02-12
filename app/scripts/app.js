@@ -215,7 +215,7 @@ $(document).on('click', '#domain-success-response [data-name]', function () {
 			out: 'json',
 			auth: Cookies.get('sessionid'),
 			func: 'webdomain.delete',
-			elid: $(this).attr('data-name'),
+			elid: $(this).attr('data-name')
 		},
 		dataType: 'jsonp',
 
@@ -228,7 +228,7 @@ $(document).on('click', '#domain-success-response [data-name]', function () {
 			console.error(res);
 		}
 	});
-	$("#domain-success-response").load(location.href + " #domain-success-response");
+	$('#domain-success-response').load(location.href + ' #domain-success-response');
 });
 
 // По нажатию на кнопку создаем новое доменное имя и выводим данные в нужное поле
@@ -255,7 +255,7 @@ $('#domain-create').on('click', function (event) {
 			console.error(res);
 		}
 	});
-	$("#domain-success-response").load(location.href + " #domain-success-response");
+	$('#domain-success-response').load(location.href + ' #domain-success-response');
 });
 
 // По нажатию на кнопку удаляем Базу данных. Чтобы удалить, нужно отправить запрос с полем name
@@ -279,11 +279,12 @@ $(document).on('click', '#db-success-response [data-name]', function () {
 			console.error(res);
 		}
 	});
-	$("#db-success-response").load(location.href + " #db-success-response");
+	$('#db-success-response').load(location.href + ' #db-success-response');
 });
 
 // По нажатию на кнопку создаем Базу данных и выводим данные в нужное поле
 $('#db-create').on('click', function (event) {
+	event.preventDefault();
 	$.ajax({
 		url: 'https://82.146.48.90:1500/ispmgr',
 		data: {
@@ -307,7 +308,7 @@ $('#db-create').on('click', function (event) {
 			console.error(res);
 		}
 	});
-	$("#db-success-response").load(location.href + " #db-success-response");
+	$('#db-success-response').load(location.href + ' #db-success-response');
 });
 
 // Кнопка Logout
